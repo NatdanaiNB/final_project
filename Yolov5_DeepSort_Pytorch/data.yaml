@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 5
+names: ['cloth_mask', 'mask_under_chin', 'mask_under_nose', 'masked', 'no_mask']
+
+roboflow:
+  workspace: natdanai-buranapakdee
+  project: real-mask-dection
+  version: 18
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/natdanai-buranapakdee/real-mask-dection/dataset/18

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dashboards</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='css/style.css') }}"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- ddddd -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins"
+    />
+    <title>Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+      .row.content {
+        height: 550px;
+      }
+
+      /* On small screens, set height to 'auto' for the grid */
+      @media screen and (max-width: 767px) {
+        .row.content {
+          height: auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="nav nav-3">
+      <a class="nav-logo" href="{{ url_for('tohome') }}" style="margin-left: 2%"
+        >Mask Detection</a
+      >
+      <ul class="nav-list">
+        <li>
+          <a href="">Cam</a>
+        </li>
+        <li>
+          <a href="{{ url_for('dash') }}">Dashboard</a>
+        </li>
+      </ul>
+      <a href="#"> </a>
+    </nav>
+
+    <div class="container">
+      <div class="text-center p-5">
+        <div class="row">
+          <div class="col-sm-9">
+            <div style="margin-top: -2%">
+              <figure class="highcharts-figure">
+                <div id="show" style="margin-top: 2%"></div>
+              </figure>
+              <script src="https://code.highcharts.com/highcharts.js"></script>
+              <script src="https://code.highcharts.com/modules/exporting.js"></script>
+              <script src="https://code.highcharts.com/modules/export-data.js"></script>
+              <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+              <script>
+                                Highcharts.setOptions("show",{
+                    chart: {
+                        name: {
+                            style: {
+                                color: 'blue'
+                            }
+                        }
+                    }
+                });
+
+                                Highcharts.chart("show", {navigation:{buttonOption:false},
+                                  chart: {
+                                    backgroundColor: '#2b343b',
+                                    height: '50%',
+
+                                    type: "area",
+
+
+                                  },
+
+                                  title: {
+                                    text: "Count of Person by Time (on this day)",style:{color:'#d8dad9',fontFamily:'prompt',fontWeight:'bold'}
+                                  },
+                                  subtitle: {},
+                                  xAxis: {
+
+                                    categories: [
+                                      "01.00",
+                                      "02.00",
+                                      "03.00",
+                                      "04.00",
+                                      "05.00",
+                                      "06.00",
+                                      "07.00",
+                                      "08.00",
+                                      "09.00",
+                                      "10.00",
+                                      "11.00",
+                                      "12.00",
+                                      "13.00",
+                                      "14.00",
+                                      "15.00",
+                                      "16.00",
+                                      "17.00",
+                                      "18.00",
+                                      "19.00",
+                                      "20.00",
+                                      "21.00",
+                                      "22.00",
+                                      "23.00",
+                                      "00.00",
+                                    ],
+                                  },
+                                  yAxis: {
+                                    allowDecimals: false,
+                                    title: {
+                                      text: "Count",
+                                      style:{color:'#d8dad9',fontFamily:'prompt'}
+                                    }
+
+                                  },
+                                  plotOptions: {
+                                    series: {fillOpacity: 0.2},
+                                    line: {
+
+                                      dataLabels: {
+                                        enabled: true,
+                                      },
+                                      enableMouseTracking: true,
+                                    },
+                                  },
+                                  series: [
+                                    {
+                                      showInLegend: false,
+                                      name: "Total",
+
+                                      color: '#FFFFFF',
+
+                                      data: [{% for i in totalline %} {{ i }}, {% endfor %}],
+
+                                      }
+
+                                    ],
+                                  });
+              </script>
+            </div>
+          </div>
+          <div class="col-sm-3" style="margin-bottom: 20px">
+            <div class="row">
+              <div class="well2">
+                <p class="heading">Percent</p>
+
+                <h3 class="showdash">{{p_risk}}%</h3>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="well2" style="margin-bottom: px">
+                <p class="heading">Total person</p>
+
+                <h3 class="showdash">{{total_class}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5">
+            <div class="well">
+              <canvas
+                id="polarChart"
+                width="400"
+                height="400"
+                style="rgba(43,52,59,255)"
+              ></canvas>
+              <script>
+                Chart.defaults.global.defaultFontColor = "#d8dad9";
+                var ctx = document
+                  .getElementById("polarChart")
+                  .getContext("2d");
+                var myChart = new Chart(ctx, {
+                  type: "pie",
+                  data: {
+                    labels: [
+                      "Cloth mask",
+                      "Mask under nose",
+                      "Mask under chin",
+                      "Masked",
+                      "No mask",
+                    ],
+                    datasets: [
+                      {
+                        backgroundColor: [
+                          "rgba(12, 36, 49, 0.8)",
+                          "rgba(25, 74, 80, 0.8)",
+                          "rgba(211, 117, 86, 0.8)",
+                          "rgba(216, 162, 140, 0.8)",
+                          "rgba(225, 218, 210, 0.8)",
+                        ],
+                        data: [
+                          "{{count0}}",
+                          "{{count1}}",
+                          "{{count2}}",
+                          "{{count3}}",
+                          "{{count4}}",
+                        ],
+                      },
+                    ],
+                  },
+                });
+              </script>
+            </div>
+          </div>
+          <div class="col-sm-7">
+            <div class="well">
+              <canvas
+                class="barc"
+                id="myChart"
+                width="800"
+                height="400"
+              ></canvas>
+              <script>
+                var ctx = document.getElementById("myChart").getContext("2d");
+                var myChart = new Chart(ctx, {
+                  type: "bar",
+
+                  data: {
+                    labels: [
+                      "Cloth mask",
+                      "Mask under nose",
+                      "Mask under chin",
+                      "Masked",
+                      "No mask",
+                    ],
+                    datasets: [
+                      {
+                        label: "Count of person",
+                        datalabels: {
+                          align: "start",
+                          anchor: "start",
+                        },
+
+                        data: [
+                          "{{count0}}",
+                          "{{count1}}",
+                          "{{count2}}",
+                          "{{count3}}",
+                          "{{count4}}",
+                        ],
+                        backgroundColor: [
+                          "rgba(12, 36, 49, 0.5)",
+                          "rgba(25, 74, 80, 0.5)",
+                          "rgba(211, 117, 86, 0.5)",
+                          "rgba(216, 162, 140, 0.5)",
+                          "rgba(225, 218, 210, 0.5)",
+                        ],
+                        borderColor: [
+                          "rgba(12, 36, 49, 1)",
+                          "rgba(25, 74, 80, 1)",
+                          "rgba(211, 117, 86, 1)",
+                          "rgba(216, 162, 140, 1)",
+                          "rgba(225, 218, 210, 1)",
+                        ],
+                        borderWidth: 1,
+                      },
+                    ],
+                  },
+                  options: {
+                    title: {
+                      display: true,
+                      text: "Count of person by class",
+                    },
+
+                    responsive: true,
+                    maintainAspectRatio: false,
+
+                    legend: {
+                      display: false,
+                    },
+                    scales: {
+                      yAxes: [
+                        {
+                          scaleLabel: {
+                            display: true,
+                            labelString: "Count",
+                          },
+                          ticks: {
+                            beginAtZero: true,
+                          },
+                        },
+                      ],
+                      xAxes: [
+                        {
+                          scaleLabel: {
+                            display: true,
+                            labelString: "Class",
+                          },
+                          ticks: {
+                            font: {
+                              size: 1,
+                            },
+                          },
+                        },
+                      ],
+                    },
+                  },
+                });
+              </script>
+            </div>
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
